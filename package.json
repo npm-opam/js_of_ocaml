@@ -1,0 +1,62 @@
+{
+    "version": "2.8.1",
+    "exportedEnvVars": {
+        "js_of_ocaml_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "2.8.1"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "2.8.1"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "js_of_ocaml_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "js_of_ocaml_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        }
+    },
+    "name": "js_of_ocaml",
+    "dependencies": {
+        "async_kernel": "https://github.com/npm-opam/async_kernel",
+        "ocamlbuild": "https://github.com/npm-opam/ocamlbuild",
+        "base-unix": "https://github.com/npm-opam/base-unix",
+        "ocamlfind": "https://github.com/npm-opam/ocamlfind",
+        "camlp4": "https://github.com/npm-opam/camlp4",
+        "base64": "https://github.com/npm-opam/base64",
+        "ocaml": "https://github.com/npm-opam/ocaml.git#npm-4.02.3",
+        "lwt": "https://github.com/npm-opam/lwt",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
+        "substs": "https://github.com/yunxing/substs.git",
+        "ppx_deriving": "https://github.com/npm-opam/ppx_deriving",
+        "ppx_tools": "https://github.com/npm-opam/ppx_tools",
+        "cmdliner": "https://github.com/npm-opam/cmdliner",
+        "cppo": "https://github.com/npm-opam/cppo",
+        "ppx_driver": "https://github.com/npm-opam/ppx_driver",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "base-no-ppx": "https://github.com/npm-opam/base-no-ppx",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
+        "menhir": "https://github.com/npm-opam/menhir"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && make build && make install-lib BINDIR=$opam_bin && (opam-installer --prefix=$opam_prefix || true)"
+    }
+}
