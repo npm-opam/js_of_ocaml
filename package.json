@@ -1,0 +1,63 @@
+{
+    "name": "js_of_ocaml-actual",
+    "exportedEnvVars": {
+        "js_of_ocaml_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "2.8.2"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "2.8.2"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "js_of_ocaml_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "js_of_ocaml_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        }
+    },
+    "version": "2.8.2",
+    "dependencies": {
+        "@opam-alpha/ppx_driver": "*",
+        "@opam-alpha/camlp4": "*",
+        "@opam-alpha/lwt": ">= 2.4.4",
+        "@opam-alpha/ocamlbuild": "*",
+        "@opam-alpha/ocamlfind": ">= 1.5.1",
+        "@opam-alpha/menhir": "*",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
+        "substs": "https://github.com/yunxing/substs.git",
+        "@opam-alpha/ppx_tools": "*",
+        "@opam-alpha/async_kernel": "*",
+        "@opam-alpha/ppx_deriving": "*",
+        "@opam-alpha/uchar": "*",
+        "@opam-alpha/base64": ">= 2.0.0",
+        "@opam-alpha/cppo": ">= 1.1.0",
+        "@opam-alpha/cmdliner": "*",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && make build && make install-lib BINDIR=$opam_bin && (opam-installer --prefix=$opam_prefix || true)"
+    },
+    "peerDependencies": {
+        "@opam-alpha/ocaml": ">= 4.02.0"
+    }
+}
